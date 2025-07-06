@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Manifiesto del Protagonista Digital</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .container { max-width: 800px; margin: 0 auto; background: white; box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-radius: 15px; overflow: hidden; }
+        .page { padding: 40px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; page-break-after: always; }
+        .cover { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; text-align: center; position: relative; overflow: hidden; }
+        .cover::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); animation: rotate 20s linear infinite; }
+        @keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .cover-content { position: relative; z-index: 2; }
+        .main-title { font-family: 'Montserrat', sans-serif; font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); line-height: 1.2; }
+        .subtitle { font-size: 1.5rem; margin-bottom: 30px; opacity: 0.9; font-weight: 600; }
+        .author { font-size: 1.8rem; font-weight: 700; margin-top: 40px; color: #FFD700; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        .brand { font-size: 1.2rem; margin-top: 10px; opacity: 0.8; }
+        h1, h2 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #2c3e50; margin-bottom: 25px; }
+        h1 { font-size: 2.5rem; border-bottom: 4px solid #e74c3c; padding-bottom: 15px; text-align: center; }
+        h2 { font-size: 2rem; color: #34495e; margin-top: 30px; }
+        .intro-text { font-size: 1.3rem; font-style: italic; color: #7f8c8d; text-align: center; margin-bottom: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px; border-left: 5px solid #3498db; }
+        .highlight { background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%); padding: 3px 8px; border-radius: 5px; font-weight: 600; color: #2c3e50; }
+        .pain-point { background: #ffe6e6; padding: 20px; border-radius: 10px; border-left: 5px solid #e74c3c; margin: 20px 0; font-size: 1.1rem; }
+        .solution-box { background: #e8f5e8; padding: 20px; border-radius: 10px; border-left: 5px solid #27ae60; margin: 20px 0; font-size: 1.1rem; }
+        .checklist { background: #f0f8ff; padding: 25px; border-radius: 10px; border: 2px solid #3498db; margin: 25px 0; }
+        .checklist h3 { color: #2980b9; margin-bottom: 15px; font-size: 1.4rem; }
+        .checklist ul { list-style: none; padding-left: 0; }
+        .checklist li { padding: 8px 0; padding-left: 30px; position: relative; font-size: 1.1rem; }
+        .checklist li::before { content: '✓'; position: absolute; left: 0; color: #27ae60; font-weight: bold; font-size: 1.2rem; }
+        .path-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0; }
+        .path-box { padding: 25px; border-radius: 15px; text-align: center; }
+        .path-artisan { background: #ffe6e6; border: 3px solid #e74c3c; }
+        .path-architect { background: #e8f5e8; border: 3px solid #27ae60; }
+        .path-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 15px; }
+        .cta-section { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 50px 30px; border-radius: 15px; margin: 30px 0; }
+        .cta-button { background: #e74c3c; color: white; padding: 20px 40px; font-size: 1.4rem; font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3); margin-top: 20px; text-decoration: none; display: inline-block; }
+        .cta-button:hover { background: #c0392b; transform: translateY(-3px); box-shadow: 0 15px 40px rgba(231, 76, 60, 0.4); }
+        .stats-box { background: #f0f8ff; padding: 20px; border-radius: 10px; border-left: 5px solid #3498db; margin: 20px 0; text-align: center; font-size: 1.2rem; font-weight: 600; }
+        .quote { font-size: 1.3rem; font-style: italic; text-align: center; color: #7f8c8d; margin: 30px 0; padding: 20px; border-left: 4px solid #95a5a6; background: #f8f9fa; }
+        .emphasis { color: #e74c3c; font-weight: 700; }
+        .success-color { color: #27ae60; font-weight: 700; }
+        .funnel-diagram { background: #f8f9fa; padding: 30px; border-radius: 15px; margin: 25px 0; text-align: center; }
+        .funnel-step { background: white; padding: 20px; margin: 15px 0; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); position: relative; }
+        .funnel-step::after { content: '↓'; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); font-size: 2rem; color: #3498db; }
+        .funnel-step:last-child::after { display: none; }
+        @media (max-width: 768px) {
+            .main-title { font-size: 2.5rem; }
+            .path-comparison { grid-template-columns: 1fr; }
+            .page { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page cover">
+            <div class="cover-content">
+                <h1 class="main-title">EL MANIFIESTO<br>DEL PROTAGONISTA<br>DIGITAL</h1>
+                <p class="subtitle">Tu Guía Definitiva para Pasar de Espectador a Creador con Ingresos Reales</p>
+                <div class="author">ÉXITO DIGITAL IA 360</div>
+                <div class="brand">Marketing Digital • Inteligencia Artificial • Libertad Financiera</div>
+            </div>
+        </div>
+
+        <div class="page">
+             <h1>No Estás Estancado, Estás Mal Equipado</h1>
+            <div class="intro-text">"El problema no es tu falta de ganas, es tu falta de un sistema integrado."</div>
+            <p>Te levantas cada mañana con la misma sensación en el pecho. Esa mezcla de frustración y ansiedad que viene de saber que <span class="highlight">tienes potencial, pero no sabes cómo liberarlo</span>.</p>
+            <div class="pain-point"><strong>¿Te resulta familiar?</strong><br>• Scrolleas por horas viendo el éxito de otros en redes sociales<br>• Tienes una colección de cursos a medio terminar<br>• Sabes que "algo" quieres vender online, pero no sabes qué<br>• Te sientes como un espectador en el mundo digital<br>• Cada día que pasa, la sensación de "estar perdiendo oportunidades" crece</div>
+            <p>Déjame decirte algo que cambiará tu perspectiva para siempre: <span class="emphasis">No estás estancado. No te falta talento. No llegaste tarde.</span></p>
+            <p>Simplemente estás <span class="highlight">mal equipado</span>.</p>
+            <div class="solution-box"><strong>La verdad que nadie te dice:</strong><br>El 87% de las personas que intentan emprender online fracasan, no por falta de motivación, sino porque intentan construir un rascacielos con herramientas de jardín.</div>
+            <p>En las próximas páginas, te voy a entregar algo que ningún "gurú" te dará: <span class="success-color">el plano exacto del sistema integrado</span> que transforma consumidores pasivos en protagonistas digitales con ingresos reales.</p>
+            <p>No son teorías. No son promesas vacías. Es el mismo sistema que ha permitido a cientos de personas pasar de la frustración a la libertad financiera.</p>
+            <div class="quote">"Pasa de ser un consumidor pasivo a un creador digital con ingresos reales"</div>
+        </div>
+
+        <div class="page">
+            <h1>Capítulo 1: El QUÉ</h1>
+            <h2>Rompiendo el Mito del "Producto Perfecto"</h2>
+            <p>La pregunta que paraliza a millones de emprendedores potenciales es siempre la misma: <span class="emphasis">"¿Qué puedo vender que no exista ya?"</span></p>
+            <p>Esta pregunta está mal formulada. Y mientras sigas haciéndotela, seguirás paralizado.</p>
+            <div class="stats-box"><strong>REALIDAD BRUTAL:</strong><br>No necesitas inventar la rueda. Necesitas una rueda que funcione.</div>
+            <p>Los emprendedores más exitosos del mundo no inventaron productos nuevos. <span class="highlight">Mejoraron sistemas existentes</span>.</p>
+            <p>• McDonald's no inventó las hamburguesas<br>• Uber no inventó los taxis<br>• Netflix no inventó las películas<br>• Amazon no inventó las librerías</p>
+            <p>Lo que hicieron fue tomar <span class="success-color">modelos de negocio probados</span> y ejecutarlos mejor.</p>
+            <div class="solution-box"><strong>EL SECRETO:</strong><br>En el mundo digital, puedes acceder a productos ya validados, con demanda probada, y enfocarte en lo que realmente importa: construir tu marca y generar ingresos.</div>
+            <p>Imagínate tener acceso a un catálogo completo de productos digitales que ya han sido probados en el mercado. Cursos, ebooks, plantillas, herramientas... todo listo para que tú le pongas tu marca y comiences a vender.</p>
+            <p>Esto se llama <span class="highlight">inteligencia estratégica</span>. Mientras otros pierden meses creando desde cero, tú ya estás generando ingresos.</p>
+            <div class="checklist">
+                <h3>Los 5 Criterios de un Producto Digital Ganador</h3>
+                <ul>
+                    <li><strong>Demanda Probada:</strong> Que ya tenga un historial de ventas exitoso</li>
+                    <li><strong>Nicho Evergreen:</strong> Que resuelva problemas atemporales (salud, dinero, relaciones)</li>
+                    <li><strong>Escalabilidad:</strong> Que puedas vender 1 o 1,000 copias sin trabajo extra</li>
+                    <li><strong>Margen Alto:</strong> Que te permita cobrar 10x más de lo que te cuesta</li>
+                    <li><strong>Consumo Rápido:</strong> Que genere resultados inmediatos y testimonio</li>
+                </ul>
+            </div>
+            <p>El producto perfecto no existe. El producto <span class="emphasis">probado</span> sí.</p>
+        </div>
+
+        <div class="page">
+            <h1>Capítulo 2: Las HERRAMIENTAS</h1>
+            <h2>El Arsenal del Protagonista Digital</h2>
+            <p>Tener un buen producto sin las herramientas correctas es como tener un auto de carreras sin ruedas. <span class="highlight">Técnicamente funciona, pero no te llevará a ningún lado</span>.</p>
+            <p>La diferencia entre alguien que vende $100 al mes y alguien que vende $10,000 al mes no está en el producto. Está en las herramientas.</p>
+            <div class="pain-point"><strong>LA TRAMPA COSTOSA:</strong><br>La mayoría de emprendedores se dan cuenta muy tarde de que necesitan un arsenal completo de herramientas profesionales...</div>
+            <p>Para competir en el mundo digital moderno, necesitas herramientas en estas categorías esenciales: Diseño y Contenido, Gestión y CRM, Email Marketing y Redes Sociales.</p>
+             <div class="stats-box"><strong>REALIDAD BRUTAL:</strong><br>Antes de generar tu primer dólar, ya necesitas invertir cientos o miles de dólares al año solo en herramientas.</div>
+            <p>¿Ves el problema? La mayoría de emprendedores abandonan antes de empezar porque <span class="emphasis">los costos los asfixian antes de generar ingresos</span>.</p>
+            <p>Pero, ¿qué pasaría si pudieras tener acceso a todas estas herramientas PRO por una fracción del costo? <span class="success-color">¿Y si pudieras conseguirlas con un solo pago, sin mensualidades?</span></p>
+            <div class="solution-box"><strong>EL SECRETO DE LOS PROTAGONISTAS:</strong><br>No compran herramientas una por una. Acceden a ecosistemas completos que incluyen todo lo que necesitan, por el precio de una sola herramienta.</div>
+        </div>
+
+        <div class="page">
+            <h1>Capítulo 3: El MÉTODO</h1>
+            <h2>El Mapa para No Perderte en el Camino</h2>
+            <p>Tienes el producto. Tienes las herramientas. Pero sin un método claro, <span class="highlight">sigues siendo un amateur con equipo profesional</span>.</p>
+            <div class="pain-point"><strong>EL ASESINO SILENCIOSO:</strong><br>La soledad del emprendedor. Intentar descifrar todo solo, sin guía, sin comunidad, sin mentores. Es el camino más largo y doloroso al fracaso.</div>
+            <p>Un método no es solo una estrategia. Es un <span class="success-color">sistema paso a paso</span> que te dice exactamente qué hacer, cuándo hacerlo, y cómo medir si está funcionando.</p>
+            <div class="funnel-diagram">
+                <h3>🎯 El Embudo del Protagonista Digital</h3>
+                <div class="funnel-step"><strong>1. CONTENIDO DE VALOR</strong><br>Atrae a tu audiencia con soluciones reales</div>
+                <div class="funnel-step"><strong>2. CAPTURA DE LEADS</strong><br>Convierte visitantes en contactos (¡Como este e-book!)</div>
+                <div class="funnel-step"><strong>3. NUTRICIÓN Y CONFIANZA</strong><br>Construye relación y autoridad</div>
+                <div class="funnel-step"><strong>4. OFERTA PRINCIPAL</strong><br>Presenta tu solución completa</div>
+                <div class="funnel-step"><strong>5. COMUNIDAD Y RETENCIÓN</strong><br>Mantén y multiplica el valor</div>
+            </div>
+            <h2>🤝 El Poder de la Comunidad</h2>
+            <p>Una comunidad real te da feedback, motivación, networking y mentoría. Sin comunidad, eres un guerrero solitario. Con comunidad, eres parte de un ejército imparable.</p>
+            <div class="solution-box"><strong>LA FÓRMULA GANADORA:</strong><br>Producto Probado + Herramientas PRO + Método Claro + Comunidad Activa = Éxito Inevitable</div>
+            <div class="quote">"Si quieres ir rápido, ve solo. Si quieres llegar lejos, ve acompañado."</div>
+        </div>
+
+        <div class="page">
+            <h1>Capítulo 4: El Puente a la Acción</h1>
+            <h2>Instalando tu Sistema 360°</h2>
+            <p>Llegaste hasta aquí porque sabes que algo tiene que cambiar. <span class="highlight">Ya no puedes seguir siendo espectador de tu propia vida</span>.</p>
+            <p>Tienes toda la información. Conoces los 3 pilares del éxito digital:</p>
+            <div class="solution-box">
+                <strong>🎯 EL QUÉ:</strong> Un catálogo de productos digitales probados<br>
+                <strong>🛠️ LAS HERRAMIENTAS:</strong> Un arsenal completo de recursos PRO<br>
+                <strong>🗺️ EL MÉTODO:</strong> Un sistema paso a paso con comunidad activa
+            </div>
+            <p>Ahora tienes dos caminos frente a ti. Tu elección determinará tu futuro.</p>
+            <div class="path-comparison">
+                <div class="path-box path-artisan">
+                    <div class="path-title">❌ El Camino del Artesano</div>
+                    <p>Intentar juntar todas las piezas por separado. Resultado: <span class="emphasis">Frustración garantizada</span>.</p>
+                </div>
+                <div class="path-box path-architect">
+                    <div class="path-title">✅ El Camino del Arquitecto</div>
+                    <p>"Instalar" un sistema pre-construido e integrado. Resultado: <span class="success-color">Éxito acelerado</span>.</p>
+                </div>
+            </div>
+            <div class="quote">"La diferencia entre el éxito y el fracaso no está en trabajar más duro, sino en tener el sistema correcto."</div>
+
+            <div class="cta-section">
+                <h2>Has Leído el Manifiesto. ¿Estás Listo Para Aplicarlo?</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 20px;">
+                    Te he entregado el plano. Ahora, te invito a conocer la maquinaria exacta que construye el rascacielos.
+                </p>
+                <a href="landing_page.html" class="cta-button">
+                    🚀 DESCUBRE EL SISTEMA COMPLETO
+                </a>
+                <p style="font-size: 1rem; margin-top: 20px; opacity: 0.9;">
+                    Haz clic para ver la presentación del Kit de Despegue Digital.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
